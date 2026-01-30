@@ -4,8 +4,8 @@
 
 A high-performance, engineering-focused portfolio designed to showcase deep technical expertise, architectural decision-making, and production-grade validation.
 
-![Portfolio Preview](/public/logo192.png) 
-*(Note: Replace with actual screenshot)*
+<img width="1918" height="977" alt="Screenshot 2026-01-30 102134" src="https://github.com/user-attachments/assets/71c759b5-5e9f-4052-a23b-1e7076788184" />
+
 
 ## 🏗️ Philosophy: Quiet Luxury
 This project moves away from generic "flashy" portfolios. Instead, it adopts a **"Quiet Luxury"** aesthetic—prioritizing content, typography, and performance over decorative noise. The goal is to let the engineering speak for itself.
