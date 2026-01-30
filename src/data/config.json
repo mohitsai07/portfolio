@@ -1,0 +1,673 @@
+{
+    "profile": {
+        "name": "Mohit Sai",
+        "logoText": "Mohit.",
+        "role": "Software Engineer",
+        "subRole": "Based in India",
+        "tagline": "I design systems that are simple to use and hard to break.",
+        "email": "mohitsai109@gmail.com",
+        "resumeLink": "/assets/resume.pdf",
+        "avatar": "/assets/profile.png",
+        "availability": "available",
+        "footerManifesto": [
+            "Engineering rigor meets thoughtful design.",
+            "Always betting on simplicity."
+        ],
+        "academicLine": "Final Year B.Tech CSE @ St. Ann’s College of Engineering & Technology",
+        "social": {
+            "github": "https://github.com/mohitsai07",
+            "linkedin": "https://www.linkedin.com/in/mohitsaipittu/"
+        }
+    },
+    "degree": {
+        "title": "B.Tech in Computer Science & Engineering",
+        "institution": "St. Ann’s College of Engineering & Technology",
+        "duration": "2022 – 2026 (Expected)",
+        "highlights": [
+            "Major Focus: AI/ML, Distributed Systems, Databases, Full Stack",
+            "Built multiple real-world and research-oriented projects",
+            "Consistently top 5% of technical cohort"
+        ]
+    },
+    "livingIntro": [
+        "Thinking in systems, shipping in increments.",
+        "Writing code that doesn't keep me up at night.",
+        "Currently deep-diving into distributed patterns."
+    ],
+    "liveThinking": {
+        "text": "Current Sandbox: Event-Driven Architectures",
+        "link": "/work#notes"
+    },
+    "workingNotes": [
+        {
+            "id": "n1",
+            "date": "2026-03-12",
+            "text": "Refactoring for idempotency: API retries shouldn't corrupt state."
+        },
+        {
+            "id": "n2",
+            "date": "2026-01-20",
+            "text": "Latency spike investigation: index miss on the 'transactions' table."
+        },
+        {
+            "id": "n3",
+            "date": "2025-08-15",
+            "text": "Replaced Redux with Context; over-engineering verified."
+        }
+    ],
+    "timeline": [
+        {
+            "id": "t_current",
+            "year": "2026",
+            "role": "Emerging Systems Engineer",
+            "company": "Current Focus",
+            "impact": "Designing distributed systems with focus on fault tolerance and observable architectures.",
+            "skills": [
+                "System Design",
+                "Event-Driven Arch",
+                "Performance Tuning"
+            ],
+            "bullets": [
+                "Deconstructing complex distributed patterns (store-and-forward, eventual consistency) in personal labs.",
+                "Refining the 'Quiet Luxury' design system for scalable frontend applications.",
+                "Building high-integrity data pipelines for local-first AI applications."
+            ]
+        },
+        {
+            "id": "t_intern",
+            "year": "July 2025 — Sept 2025",
+            "role": "Software Engineer Intern",
+            "company": "YugaYatra Retail",
+            "impact": "Optimized production backend systems, reducing query latency by 32%.",
+            "skills": [
+                "Backend Optimization",
+                "Production SQL",
+                "API Design"
+            ],
+            "bullets": [
+                "Diagnosed and fixed N+1 query bottlenecks in valid production endpoints.",
+                "Collaborated with senior engineers to implement caching strategies for high-traffic routes.",
+                "Shipped production-grade code that handled real user transaction data."
+            ]
+        },
+        {
+            "id": "t_builder",
+            "year": "2023 — 2025",
+            "role": "Independent Builder",
+            "company": "Open Source & Freelance",
+            "impact": "Shipped 4+ full-stack products from zero to deployment.",
+            "skills": [
+                "Full-Stack Dev",
+                "Product Engineering",
+                "CI/CD"
+            ],
+            "bullets": [
+                "Architected 'AI-DATA-ANALYTICS' to solve the privacy-constrained RAG problem.",
+                "Built 'Dev-Roadmap' to visually guide 500+ junior developers.",
+                "Mastered the complete lifecycle: Concept -> Design -> Code -> Deploy -> Maintain."
+            ]
+        },
+        {
+            "id": "t_student",
+            "year": "2022 — 2026",
+            "role": "Student Developer",
+            "company": "St. Ann’s College of Engineering & Technology",
+            "impact": "Built strong CS foundations while consistently out-building the curriculum.",
+            "skills": [
+                "Algorithms",
+                "Data Structures",
+                "Web Foundations"
+            ],
+            "bullets": [
+                "Consistently ranked in top 5% of technical cohorts.",
+                "Led student teams in hackathons, focusing on delivery over hype.",
+                "Flagship Work: Architected [AI-DATA-ANALYTICS] and [Dev-Roadmap] (See Case Studies)."
+            ]
+        }
+    ],
+    "projects": [
+        {
+            "slug": "ai-data-analytics",
+            "priority": 1,
+            "title": "AI-DATA-ANALYTICS",
+            "caseStudy": {
+                "context": "Non-technical stakeholders struggled to extract insights from raw CSV datasets, creating a bottleneck for data analysts.",
+                "constraint": "Data privacy requirements strictly prohibited uploading raw CSV content to external LLM providers.",
+                "failure": "Initial direct-prompting approach resulted in 40% hallucinated column names and invalid SQL syntax.",
+                "fix": "Architected a 'Schema-Only' RAG pipeline. The system extracts only the metadata (headers, types) to generate a prompt, keeping actual row data local.",
+                "result": "Reduced query hallucinations to <5% and enabled instant chart generation for 10k+ row datasets.",
+                "lesson": "Context window management is more critical than model size for structured data tasks.",
+                "keyMetric": {
+                    "label": "Query Accuracy",
+                    "value": "95%"
+                },
+                "decisions": [
+                    {
+                        "topic": "Context Injection",
+                        "choice": "Schema-Only Propagation",
+                        "reason": "Prevents data leakage while providing sufficient structure for the LLM to generate valid Pandas/SQL queries.",
+                        "alternatives": [
+                            "Full Data Upload",
+                            "Embedding Rows"
+                        ]
+                    },
+                    {
+                        "topic": "Execution Engine",
+                        "choice": "Pandas (Local)",
+                        "reason": "Allows immediate in-memory processing without setting up a dedicated SQL database instance for every user.",
+                        "alternatives": [
+                            "SQLite",
+                            "PostgreSQL"
+                        ]
+                    }
+                ],
+                "tradeoffs": [
+                    {
+                        "option": "Client-Side Processing",
+                        "pros": "Zero server cost, maximum privacy.",
+                        "cons": "Browser memory limits (approx 2GB heap).",
+                        "reason": "Privacy was the non-negotiable constraint."
+                    }
+                ],
+                "validation": {
+                    "method": "Golden Dataset Testing",
+                    "dataset": "50 complex natural language queries",
+                    "setup": "Automated regression test suite against known correct SQL outputs"
+                }
+            },
+            "tech": [
+                "Python",
+                "LangChain",
+                "Pandas",
+                "Streamlit"
+            ],
+            "links": {
+                "repo": "https://github.com/mohitsai07/AI-DATA-ANALYTICS.git",
+                "live": null,
+                "screenshot": "/assets/projects/ai-data-analytics.webp"
+            },
+            "endorsementId": "e1"
+        },
+        {
+            "slug": "dev-roadmap-website",
+            "priority": 2,
+            "title": "Dev-roadmap-website",
+            "caseStudy": {
+                "context": "Self-taught developers often get lost in 'tutorial hell' without a structured, dependency-aware learning path.",
+                "constraint": "Needed to persist progress across sessions without forcing users to sign up/authenticate.",
+                "failure": "Initial basic list structure failed to visualize dependencies (e.g., 'Learn React BEFORE Redux').",
+                "fix": "Implemented a Directed Acyclic Graph (DAG) visualization engine to enforce prerequisite locking.",
+                "result": "Reduced user drop-off by 25% by clearly showing 'Next Available Steps'.",
+                "lesson": "Visualizing structure reduces cognitive load for learners.",
+                "keyMetric": {
+                    "label": "User Retention",
+                    "value": "+25%"
+                },
+                "decisions": [
+                    {
+                        "topic": "State Persistence",
+                        "choice": "LocalStorage + versions",
+                        "reason": "Zero-friction for new users; no database costs.",
+                        "alternatives": [
+                            "Firebase Auth",
+                            "Postgres"
+                        ]
+                    }
+                ],
+                "tradeoffs": [
+                    {
+                        "option": "Custom Graph Engine",
+                        "pros": "Total control over styling and interaction.",
+                        "cons": "High initial dev effort vs using a library like React Flow.",
+                        "reason": "React Flow was too heavy (bundle size) for the simple DAG needed."
+                    }
+                ],
+                "validation": {
+                    "method": "Lighthouse Performance Audit",
+                    "dataset": "Mobile vs Desktop",
+                    "setup": "Achieved 98/100 Performance score on mobile networks"
+                }
+            },
+            "tech": [
+                "TypeScript",
+                "React",
+                "Next.js"
+            ],
+            "links": {
+                "repo": "https://github.com/mohitsai07/Dev-roadmap-website.git",
+                "live": "https://develope-roadmap.vercel.app/",
+                "screenshot": "/assets/projects/dev-roadmap.webp"
+            }
+        },
+        {
+            "slug": "code-reviewer",
+            "priority": 3,
+            "title": "Code-Reviewer",
+            "caseStudy": {
+                "context": "Manual code reviews are inconsistent and often miss subtle anti-patterns in large diffs.",
+                "constraint": "Feedback system needed to be near-instant (<5s) to be useful in a dev loop.",
+                "failure": "Sending entire files to LLM caused timeouts and hit token limits immediately.",
+                "fix": "Built an AST-based chunker that identifies changed functions and only analyzes relevant scopes.",
+                "result": "Reduced token usage by 70% and latency to ~3.5s per file.",
+                "lesson": "Preprocessing code (AST analysis) is cheaper and faster than post-processing LLM output.",
+                "keyMetric": {
+                    "label": "Token Reduction",
+                    "value": "70%"
+                },
+                "decisions": [
+                    {
+                        "topic": "Analysis Pipeline",
+                        "choice": "Determine Diff -> AST Extract -> Prompt",
+                        "reason": "Maximizes signal-to-noise ratio for the LLM.",
+                        "alternatives": [
+                            "Full File Scan",
+                            "Git Diff Only"
+                        ]
+                    }
+                ],
+                "tradeoffs": [
+                    {
+                        "option": "Node.js Backend",
+                        "pros": "Shared language with frontend (AST tools).",
+                        "cons": "Lower raw compute performance than Rust/Go.",
+                        "reason": "Rich ecosystem of JS parsers (Acorn, Babel) outweighed raw speed."
+                    }
+                ],
+                "validation": {
+                    "method": "Load Testing",
+                    "dataset": "Simultaneous requests",
+                    "setup": "Sustained 50 concurrent review requests without degradation"
+                }
+            },
+            "tech": [
+                "JavaScript",
+                "Node.js",
+                "LLM",
+                "AST"
+            ],
+            "links": {
+                "repo": "https://github.com/mohitsai07/Code-Reviewer.git",
+                "live": null,
+                "screenshot": "/assets/projects/code-reviewer.webp"
+            }
+        },
+        {
+            "slug": "real-location-tracker",
+            "priority": 4,
+            "title": "real-location-tracker",
+            "caseStudy": {
+                "context": "Tracking fleet assets requires real-time visibility, but mobile networks are unreliable.",
+                "constraint": "Must handle network drops without losing location history trails.",
+                "failure": "Simple WebSocket emission resulted in gaps in the path when network flickered.",
+                "fix": "Implemented a local 'Store-and-Forward' queue (IndexedDB) that syncs bursts when connection restores.",
+                "result": "100% path integrity even with 50% simulated packet loss.",
+                "lesson": "Assume the network is always broken.",
+                "keyMetric": {
+                    "label": "Data Integrity",
+                    "value": "100%"
+                },
+                "decisions": [
+                    {
+                        "topic": "Transport Protocol",
+                        "choice": "Socket.io (WebSockets)",
+                        "reason": "Bi-directional heartbeat capability makes connection state easier to manage than raw HTTP.",
+                        "alternatives": [
+                            "Long Polling",
+                            "Server-Sent Events"
+                        ]
+                    }
+                ],
+                "tradeoffs": [
+                    {
+                        "option": "In-Memory Storage (Redis)",
+                        "pros": "Extremely fast read/write for live locations.",
+                        "cons": "Data loss on crash (without persistence).",
+                        "reason": "Speed was prioritized over long-term archival for this live-view prototype."
+                    }
+                ],
+                "validation": {
+                    "method": "Network Throttling Simulation",
+                    "dataset": "Chrome DevTools",
+                    "setup": "Tested specifically on 'Slow 3G' and 'Offline' transitions"
+                }
+            },
+            "tech": [
+                "JavaScript",
+                "Socket.io",
+                "Leaflet Maps"
+            ],
+            "links": {
+                "repo": "https://github.com/mohitsai07/real-location-tracker.git",
+                "live": "https://real-location-tracker.vercel.app/",
+                "screenshot": "/assets/projects/real-location-tracker.webp"
+            }
+        }
+    ],
+    "endorsements": [
+        {
+            "id": "e1",
+            "projectSlug": "ai-data-analytics",
+            "quote": "We face a similar challenge at RAI AI, prioritizing speed while processing cross-platform data streams where minutes of latency translate to missed opportunities.",
+            "author": "Dmytro B.",
+            "role": "AI Engineer @ RAI AI",
+            "source": "LinkedIn Thread (Public)",
+            "date": "2026-01-15",
+            "verifiedLink": "https://www.linkedin.com/feed/update/urn:li:ugcPost:7420404657518419968?commentUrn=urn%3Ali%3Acomment%3A%28ugcPost%3A7420404657518419968%2C7420405817880985600%29&dashCommentUrn=urn%3Ali%3Afsd_comment%3A%287420405817880985600%2Curn%3Ali%3AugcPost%3A7420404657518419968%29",
+            "avatar": null
+        }
+    ],
+    "certificates": [
+        {
+            "id": "c_intern",
+            "title": "Software Engineer Intern",
+            "provider": "YugaYatra Retail Private Ltd",
+            "year": "2025",
+            "month": "Oct",
+            "proofImage": "/assets/certs/software-intern.jpg",
+            "verifyUrl": "#",
+            "skillsLearned": "Backend system optimization, Database query tuning, Production deployment approaches.",
+            "relatedProjects": [
+                "YugaYatra Platform"
+            ]
+        },
+        {
+            "id": "c_hackathon",
+            "title": "Web Development Hackathon",
+            "provider": "Tutedude",
+            "year": "2025",
+            "month": "Aug",
+            "proofImage": "/assets/certs/web-hackathon.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Rapid prototyping, Responsive design implementation, Team collaboration under pressure.",
+            "relatedProjects": []
+        },
+        {
+            "id": "c_python",
+            "title": "Python Programming",
+            "provider": "Infosys Springboard",
+            "year": "2025",
+            "month": "Jul",
+            "proofImage": "/assets/certs/python-infosys.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Core Python syntax, Data structures, Scripting for automation.",
+            "relatedProjects": [
+                "AI-DATA-ANALYTICS"
+            ]
+        },
+        {
+            "id": "c_mern",
+            "title": "Full Stack Development (MERN)",
+            "provider": "TheSmartBridge",
+            "year": "2025",
+            "month": "Jul",
+            "proofImage": "/assets/certs/mern-stack.png",
+            "verifyUrl": "#",
+            "skillsLearned": "MongoDB schema design, Express/Node middleware, React component state management.",
+            "relatedProjects": [
+                "Dev-roadmap-website"
+            ]
+        },
+        {
+            "id": "c_excel",
+            "title": "Microsoft Excel",
+            "provider": "Coursera",
+            "year": "2024",
+            "month": "Sep",
+            "proofImage": "/assets/certs/excel-coursera.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Advanced formulas, Pivot tables, Data visualization best practices.",
+            "relatedProjects": []
+        },
+        {
+            "id": "c_cloud",
+            "title": "Cloud Computing",
+            "provider": "SWAYAM MHRD",
+            "year": "2024",
+            "month": "Jul",
+            "proofImage": "/assets/certs/cloud-computing.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Distributed system fundamentals, Cloud service models (IaaS, PaaS, SaaS).",
+            "relatedProjects": []
+        },
+        {
+            "id": "c_security",
+            "title": "Cyber Security",
+            "provider": "AIMER Society",
+            "year": "2024",
+            "month": "Jul",
+            "proofImage": "/assets/certs/cyber-security.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Web vulnerability assessment, Basic pen-testing concepts, Secure coding.",
+            "relatedProjects": []
+        },
+        {
+            "id": "c_iot",
+            "title": "Intro to Internet of Things",
+            "provider": "SWAYAM MHRD",
+            "year": "2024",
+            "month": "Apr",
+            "proofImage": "/assets/certs/iot-intro.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Sensor data acquisition, Edge computing basics, IoT protocols (MQTT).",
+            "relatedProjects": [
+                "real-location-tracker"
+            ]
+        },
+        {
+            "id": "c_nlp",
+            "title": "NLP, ChatGPT & Prompt Eng",
+            "provider": "ExcelR",
+            "year": "2024",
+            "month": "Jan",
+            "proofImage": "/assets/certs/nlp-prompt.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Prompt engineering strategies, LLM integration, Token limit optimization.",
+            "relatedProjects": [
+                "Code-Reviewer"
+            ]
+        },
+        {
+            "id": "c_ai_rinex",
+            "title": "Artificial Intelligence Course",
+            "provider": "RineX.Ai",
+            "year": "2023",
+            "month": "Jul",
+            "proofImage": "/assets/certs/ai-rinex.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Machine Learning algorithms, Neural network foundations, Model evaluation.",
+            "relatedProjects": []
+        },
+        {
+            "id": "c_office",
+            "title": "Adv Excel, Power Point and Word",
+            "provider": "ExcelR",
+            "year": "2022",
+            "month": "Nov",
+            "proofImage": "/assets/certs/office-suite.png",
+            "verifyUrl": "#",
+            "skillsLearned": "Professional documentation, Data presentation, Office automation.",
+            "relatedProjects": []
+        }
+    ],
+    "howIWork": [
+        {
+            "id": "r1",
+            "title": "Test before optimize",
+            "example": "Use tests to validate behaviour before premature performance work."
+        },
+        {
+            "id": "r2",
+            "title": "Keep interfaces small",
+            "example": "Tiny APIs reduce surface area and bugs."
+        },
+        {
+            "id": "r3",
+            "title": "Ship early, measure often",
+            "example": "Collect data and iterate quickly."
+        }
+    ],
+    "expertise": [
+        {
+            "id": "frontend",
+            "title": "Frontend Engineering",
+            "description": "Crafting responsive, accessible, and performant user interfaces.",
+            "skills": [
+                {
+                    "name": "React",
+                    "level": 90,
+                    "usedIn": [
+                        "Portfolio v2",
+                        "Dev-Roadmap"
+                    ],
+                    "decision": "Chose component-based architecture for reusability and declarative UI state.",
+                    "principle": "Keep interfaces small",
+                    "links": []
+                },
+                {
+                    "name": "TypeScript",
+                    "level": 85,
+                    "usedIn": [
+                        "Dev-Roadmap",
+                        "Design System"
+                    ],
+                    "decision": "Enforced strict typing to catch errors at compile time rather than runtime.",
+                    "principle": "Safety first",
+                    "links": []
+                },
+                {
+                    "name": "Tailwind/CSS",
+                    "level": 80,
+                    "usedIn": [
+                        "Portfolio v2",
+                        "Dashboard UI"
+                    ],
+                    "decision": "Utilized utility classes for rapid iteration and consistent design tokens.",
+                    "principle": "Ship early, measure often",
+                    "links": []
+                }
+            ]
+        },
+        {
+            "id": "backend",
+            "title": "Backend Systems",
+            "description": "Building reliable APIs and scalable data pipelines.",
+            "skills": [
+                {
+                    "name": "Node.js",
+                    "level": 85,
+                    "usedIn": [
+                        "Code-Reviewer",
+                        "Real-Location-Tracker"
+                    ],
+                    "decision": "Leveraged event-driven architecture for handling concurrent I/O operations.",
+                    "principle": "Async by default",
+                    "links": []
+                },
+                {
+                    "name": "Python",
+                    "level": 80,
+                    "usedIn": [
+                        "AI-Data-Analytics",
+                        "ETL Pipelines"
+                    ],
+                    "decision": "Selected for its rich ecosystem in data processing and AI/LLM integration.",
+                    "principle": "Right tool for the job",
+                    "links": []
+                },
+                {
+                    "name": "SQL (Postgres)",
+                    "level": 75,
+                    "usedIn": [
+                        "Auth Service",
+                        "Analytics Core"
+                    ],
+                    "decision": "Prioritized relational integrity and ACID compliance for critical user data.",
+                    "principle": "Data integrity matters",
+                    "links": []
+                }
+            ]
+        },
+        {
+            "id": "tools",
+            "title": "Tools & DevOps",
+            "description": "Streamlining development and deployment workflows.",
+            "skills": [
+                {
+                    "name": "Git & GitHub",
+                    "level": 90,
+                    "usedIn": [
+                        "All Projects"
+                    ],
+                    "decision": "Maintained clean history and semantic commits for easier collaboration.",
+                    "principle": "History is documentation",
+                    "links": []
+                },
+                {
+                    "name": "Docker",
+                    "level": 70,
+                    "usedIn": [
+                        "Local Dev",
+                        "Deployment"
+                    ],
+                    "decision": "Containerized services to ensure environment parity between dev and prod.",
+                    "principle": "Reproducibility",
+                    "links": []
+                },
+                {
+                    "name": "AWS",
+                    "level": 60,
+                    "usedIn": [
+                        "S3 Hosting",
+                        "Lambda Functions"
+                    ],
+                    "decision": "Offloaded static asset serving to S3/CloudFront for global low latency.",
+                    "principle": "Scale on demand",
+                    "links": []
+                }
+            ]
+        }
+    ],
+    "contactItems": [
+        {
+            "type": "email",
+            "value": "mohit@example.com",
+            "link": "mailto:mohit@example.com"
+        },
+        {
+            "type": "linkedin",
+            "value": "LinkedIn",
+            "link": "https://linkedin.com/in/mohit"
+        },
+        {
+            "type": "github",
+            "value": "GitHub",
+            "link": "https://github.com/mohit"
+        }
+    ],
+    "navItems": [
+        {
+            "label": "About",
+            "id": "home"
+        },
+        {
+            "label": "Work",
+            "id": "experience"
+        },
+        {
+            "label": "Projects",
+            "id": "projects"
+        },
+        {
+            "label": "Expertise",
+            "id": "skills"
+        },
+        {
+            "label": "Education",
+            "id": "certificates"
+        },
+        {
+            "label": "Contact",
+            "id": "contact"
+        }
+    ]
+}

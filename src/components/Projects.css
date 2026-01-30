@@ -1,0 +1,147 @@
+/* QUIET PROJECTS - WITH AUTOPSY & ORIGIN */
+
+.projects-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3rem;
+}
+
+.project-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.project-item:hover {
+    border-bottom-color: rgba(255, 255, 255, 0.15);
+}
+
+.project-item:last-child {
+    border-bottom: none;
+}
+
+.project-header {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+.project-title {
+    font-family: var(--font-heading);
+    font-size: 1.25rem;
+    font-weight: 400;
+    color: var(--text-primary);
+    transition: color 0.3s ease;
+}
+
+.project-item:hover .project-title {
+    color: var(--accent-color);
+}
+
+.project-impact {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    color: var(--text-secondary);
+    font-weight: 300;
+}
+
+.project-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+}
+
+.autopsy-btn {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--text-secondary);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    transition: all 0.2s;
+}
+
+.autopsy-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+    color: var(--text-tertiary);
+    opacity: 0.7;
+}
+
+.project-item:hover .project-links {
+    opacity: 1;
+}
+
+.project-links a:hover {
+    color: var(--accent-color);
+}
+
+.project-meta {
+    display: flex;
+    gap: 1rem;
+}
+
+.meta-tag {
+    font-family: var(--font-body);
+    font-size: 0.8rem;
+    color: var(--text-tertiary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+}
+
+/* MICRO ORIGIN TOOLTIP */
+.project-origin {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    color: var(--text-tertiary);
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+    transition-delay: 0.1s;
+    /* No accidental flicker */
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.origin-label {
+    color: var(--accent-color);
+}
+
+.project-item:hover .project-origin {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+@media (max-width: 768px) {
+    .project-header {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .project-actions {
+        width: 100%;
+        justify-content: space-between;
+        margin-top: 0.5rem;
+    }
+
+    .project-origin {
+        opacity: 0.5;
+        transform: none;
+        margin-top: 0.5rem;
+    }
+}

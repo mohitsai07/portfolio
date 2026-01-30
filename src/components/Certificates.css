@@ -1,0 +1,63 @@
+/* DEPTH MODE EDUCATION */
+
+.education-list {
+    display: flex;
+    flex-direction: column;
+    gap: 3.5rem;
+}
+
+.education-entry {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.edu-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.edu-title {
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.edu-meta {
+    font-family: var(--font-body);
+    font-size: 0.9rem;
+    color: var(--text-tertiary);
+    font-style: italic;
+}
+
+.edu-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.edu-text {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+}
+
+.edu-label {
+    font-family: var(--font-heading);
+    color: var(--accent-color);
+    font-size: 0.9rem;
+    margin-right: 8px;
+    font-style: italic;
+}
+
+@media (max-width: 768px) {
+    .edu-top {
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+}

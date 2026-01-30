@@ -1,0 +1,141 @@
+/* 3D PROFILE FLIP CARD - HOLOGRAM UPGRADE */
+
+.flip-container {
+  perspective: 1000px;
+  width: 220px;
+  height: 220px;
+  margin: 0 auto 2rem;
+  cursor: pointer;
+  position: relative;
+  z-index: 10;
+}
+
+/* Flipper Container */
+.flipper {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transform-style: preserve-3d;
+  position: relative;
+}
+
+@media (hover: hover) {
+  .flip-container:hover .flipper {
+    transform: rotateY(180deg);
+  }
+}
+
+.flipper.flipped {
+  transform: rotateY(180deg);
+}
+
+.flip-face {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 4px solid rgba(0, 240, 255, 0.15);
+  /* Cyber Blue Border */
+  background: #000;
+}
+
+/* HOLOGRAM SCANLINES */
+.flip-face::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(0deg,
+      transparent 0px,
+      transparent 4px,
+      rgba(0, 240, 255, 0.05) 5px);
+  pointer-events: none;
+  z-index: 5;
+}
+
+.front {
+  z-index: 2;
+  transform: rotateY(0deg);
+}
+
+.avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: contrast(110%) brightness(110%);
+}
+
+.glow-ring {
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  border: 2px solid rgba(0, 240, 255, 0.2);
+  box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+  animation: pulseGlow 3s infinite alternate;
+  pointer-events: none;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.2);
+  }
+
+  100% {
+    box-shadow: 0 0 40px rgba(0, 240, 255, 0.6);
+  }
+}
+
+.back {
+  transform: rotateY(180deg);
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+}
+
+.avatar-img-back {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+
+.greeting-badge {
+  position: absolute;
+  bottom: 25px;
+  background: rgba(0, 240, 255, 0.1);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  border-radius: 4px;
+  color: #00f0ff;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  letter-spacing: 0.05em;
+  border: 1px solid rgba(0, 240, 255, 0.3);
+  box-shadow: 0 0 15px rgba(0, 240, 255, 0.2);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transform: translateZ(30px);
+}
+
+.wave {
+  display: inline-block;
+  animation: wave 1.2s infinite;
+}
+
+@media (max-width: 768px) {
+  .flip-container {
+    width: 190px;
+    height: 190px;
+  }
+}

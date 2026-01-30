@@ -1,0 +1,196 @@
+/* QUIET CONFIDENCE THEME - GLOBAL VARIABLES */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
+
+:root {
+  /* Matte Palette */
+  --bg-color: #1c1917;
+  /* Warm Charcoal */
+  --bg-gradient: none;
+  /* Removed Noise */
+
+  --glass-bg: transparent;
+  --glass-border: transparent;
+  --glass-shadow: none;
+
+  --accent-color: #d4b996;
+  /* Muted Clay/Gold */
+  --accent-glow: transparent;
+
+  --text-primary: #e5e5e5;
+  /* Soft White */
+  --text-secondary: #a8a29e;
+  /* Warm Grey */
+  --text-tertiary: #78716c;
+  /* Deep Grey */
+
+  /* Typography */
+  --font-heading: 'Playfair Display', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'Inter', sans-serif;
+
+  /* Spacing & Structure */
+  --header-height: 100px;
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-full: 9999px;
+
+  --container-width: 900px;
+  /* Narrower reading width */
+}
+
+/* RESET & BASE */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--bg-color);
+  color: var(--text-primary);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+/* Premium Selection */
+::selection {
+  background: rgba(212, 185, 150, 0.3);
+  /* Accent color low opacity */
+  color: #fff;
+}
+
+/* Accessibility Focus */
+:focus-visible {
+  outline: 2px solid var(--accent-color);
+  outline-offset: 4px;
+}
+
+/* Utilities */
+.container {
+  width: 90%;
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.section {
+  padding: 8rem 0;
+  /* More whitespace */
+  position: relative;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  letter-spacing: 0.02em;
+}
+
+/* Scrollbar - Minimal */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-color);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #44403c;
+  border-radius: 3px;
+}
+
+/* Overrides */
+a {
+  text-decoration: none;
+  color: inherit;
+  transition: color 0.3s ease;
+}
+
+a:hover {
+  color: var(--accent-color);
+}
+
+/* Removed Glass Panel logic, kept class for structure but reset styles */
+.glass-panel {
+  background: transparent;
+  backdrop-filter: none;
+  border: none;
+  box-shadow: none;
+  padding: 0;
+}
+
+/* LIVE RIBBON STYLES (NO TAILWIND) */
+.live-ribbon {
+  position: fixed;
+  right: 1.5rem;
+  z-index: 1000;
+  /* High z-index to sit on top */
+  will-change: top, opacity;
+  display: flex;
+  align-items: center;
+  /* pointer-events: none; REMOVED to allow clicking */
+}
+
+@media (max-width: 768px) {
+  .live-ribbon {
+    display: none !important;
+  }
+}
+
+nav,
+header,
+#site-nav {
+  z-index: 1001;
+}
+
+/* MODAL UTILITIES (added for ProjectAutopsy) */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9998;
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.modal-content {
+  background-color: var(--bg-color);
+  /* #1c1917 */
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  max-height: 90vh;
+  width: 100%;
+  max-width: 1100px;
+  overflow-y: auto;
+  position: relative;
+  z-index: 9999;
+}
+
+/* Reduced Motion */
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

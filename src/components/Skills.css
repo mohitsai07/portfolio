@@ -1,0 +1,72 @@
+/* DEPTH MODE SKILLS */
+
+.skills-editorial-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 4rem;
+}
+
+.skill-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.skill-category-header {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    color: var(--accent-color);
+    font-weight: 400;
+    font-style: italic;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    /* Subtle section divide */
+    padding-bottom: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.skill-items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+}
+
+.skill-row {
+    display: grid;
+    grid-template-columns: 180px 20px 1fr;
+    align-items: baseline;
+}
+
+.skill-name {
+    font-family: var(--font-heading);
+    font-size: 1rem;
+    color: var(--text-primary);
+    font-weight: 400;
+}
+
+.skill-separator {
+    color: var(--text-tertiary);
+}
+
+.skill-context {
+    font-family: var(--font-body);
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+    .skill-row {
+        display: flex;
+        flex-direction: column;
+        gap: 0.25rem;
+    }
+
+    .skill-separator {
+        display: none;
+    }
+
+    .skill-name {
+        font-size: 1.1rem;
+        margin-bottom: 0.25rem;
+    }
+}
